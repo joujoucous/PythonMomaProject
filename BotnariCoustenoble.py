@@ -10,8 +10,6 @@ import csv
 import folium
 
 #récuperer les deux csv sur internet
-#https://www.science-emergence.com/Articles/T%C3%A9l%C3%A9charger-un-fichier-pdf-du-web-avec-python/
-
 from selenium import webdriver
 import time 
 import zipfile #pour dezipper
@@ -38,6 +36,9 @@ driver.quit()
 zip_ref = zipfile.ZipFile(os.getcwd() + "\museum-collection.zip", 'r')
 zip_ref.extractall(os.getcwd())
 zip_ref.close()
+#https://www.science-emergence.com/Articles/T%C3%A9l%C3%A9charger-un-fichier-pdf-du-web-avec-python/
+
+
 
 
 
@@ -73,6 +74,6 @@ with open('artists.csv', 'r') as f:
                     dCountry[listeLignesCountry[i][2]]=d[k]
                     ok = 1
                     break
-        if ok==1 :
-            print(k+"\n")
+            if ok==0:
+                print(k+"\n")
 #faire l'histogramme avec les tailles des oeuvres ou ave le nombre d'oeuvres crées par années
