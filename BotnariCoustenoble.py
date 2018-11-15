@@ -29,13 +29,25 @@ with open('artists.csv', 'r') as f:
         listeLignesCountry = list(r) # l'itérable est converti en liste
         d={}
         for i in range(1,nbLignes) :
-            print(listeLignes[i][2]+"\n")
             if not listeLignes[i][2] in d :
                 d[listeLignes[i][2]] = 1
             else:
                 d[listeLignes[i][2]] = d[listeLignes[i][2]]+1
-                
-
+# Pour chaqués clés du dico
+#	pour choques lignes du csv country
+#		si clé EST CONTENU DANS linecountry[i][4]
+#			clé <- linecountry[i][2]        ``
+        dCountry={}
     #transformet la nationalité en pays
 
+        for k in d.keys():
+            ok=0
+            nbLignes=len(listeLignesCountry)
+            for i in range(1,nbLignes) :
+                if k in listeLignesCountry[i][4] :
+                    dCountry[listeLignesCountry[i][2]]=d[k]
+                    ok = 1
+                    break
+        if ok==1 :
+            print(k+"\n")
 #faire l'histogramme avec les tailles des oeuvres ou ave le nombre d'oeuvres crées par années
