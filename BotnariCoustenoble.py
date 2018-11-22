@@ -77,11 +77,7 @@ with open('artists.csv', 'r', encoding='utf8') as f:
                     break
             if ok==0:
                 print(k+"\n")
-<<<<<<< HEAD
-                
 
-#faire l'histogramme avec les tailles des oeuvres ou ave le nombre d'oeuvres crées par années
-=======
 #faire l'histogramme avec les tailles des oeuvres ou ave le nombre d'oeuvres crées par années
                 
 with open('artworks.csv', 'r', encoding='utf8') as f3:
@@ -101,6 +97,3 @@ plt.xlabel('Année création oeuvres')
 plt.ylabel('Nombre Oeuvres')
 plt.title('Exemple d\' histogramme simple')
 plt.show()
-        
-    
->>>>>>> 8c5c5f68967d9e9e577a36ed06d8c627798cba53
