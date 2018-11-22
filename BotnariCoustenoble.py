@@ -44,12 +44,12 @@ import folium
 
 #faire la carte du monde avec les nationalitées des artistes
     #ouverture du fichier artistes avec la methode sécurisée
-with open('artists.csv', 'r') as f:
+with open('artists.csv', 'r', encoding='utf8') as f:
     r = csv.reader(f)
     listeLignes = list(r) # l'itérable est converti en liste
     nbLignes=len(listeLignes)
     
-    with open('countries.csv', 'r') as f2:
+    with open('countries.csv', 'r', encoding='utf8') as f2:
         
         r = csv.reader(f2)
         listeLignesCountry = list(r) # l'itérable est converti en liste
