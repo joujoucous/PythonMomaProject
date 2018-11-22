@@ -7,9 +7,11 @@ Created on Thu Nov  8 17:34:07 2018
 """
 #imports
 import csv
-import folium
+import matplotlib.pyplot as plt
+#import folium
 
 #récuperer les deux csv sur internet
+
 #from selenium import webdriver
 #import time 
 #import zipfile #pour dezipper
@@ -37,8 +39,6 @@ import folium
 #zip_ref.extractall(os.getcwd())
 #zip_ref.close()
 #https://www.science-emergence.com/Articles/T%C3%A9l%C3%A9charger-un-fichier-pdf-du-web-avec-python/
-
-
 
 
 
@@ -77,3 +77,23 @@ with open('artists.csv', 'r', encoding='utf8') as f:
             if ok==0:
                 print(k+"\n")
 #faire l'histogramme avec les tailles des oeuvres ou ave le nombre d'oeuvres crées par années
+                
+with open('artworks.csv', 'r', encoding='utf8') as f3:
+    r = csv.reader(f3)
+    listeLignesOeuvres = list(r) # l'itérable est converti en liste
+    nbOeuvres=len(listeLignesOeuvres)
+    for i in range(1,nbOeuvres) :
+        if  (listeLignesOeuvres[i][5])!="" :
+            data[i-1]=listeLignesOeuvres[i][5]
+            print(data[i-1]+"\n")
+
+    
+#data = [1995,1997,1995,1974,1995,1997,1987,1940,1956,1977,1990]
+#plt.hist(data,normed=1)
+plt.hist(data,bins = list(range(1940,2000,10)), color = 'yellow',edgecolor = 'red')
+plt.xlabel('Année création oeuvres')
+plt.ylabel('Nombre Oeuvres')
+plt.title('Exemple d\' histogramme simple')
+plt.show()
+        
+    
