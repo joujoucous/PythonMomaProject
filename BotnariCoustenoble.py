@@ -76,4 +76,6 @@ with open('artists.csv', 'r', encoding='utf8') as f:
                     break
             if ok==0:
                 print(k+"\n")
+                
+
 #faire l'histogramme avec les tailles des oeuvres ou ave le nombre d'oeuvres crées par années
