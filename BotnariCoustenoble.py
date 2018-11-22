@@ -10,32 +10,32 @@ import csv
 import folium
 
 #récuperer les deux csv sur internet
-from selenium import webdriver
-import time 
-import zipfile #pour dezipper
-import os #pour retrouver le chemin courant
+#from selenium import webdriver
+#import time 
+#import zipfile #pour dezipper
+#import os #pour retrouver le chemin courant
 
 
-chrome_options = webdriver.ChromeOptions()
-prefs = {'download.default_directory' : os.getcwd()}
-chrome_options.add_experimental_option('prefs', prefs)
-path=os.getcwd() + "\chromedriver.exe"
-driver = webdriver.Chrome(chrome_options=chrome_options,executable_path=r'' + path )
+#chrome_options = webdriver.ChromeOptions()
+#prefs = {'download.default_directory' : os.getcwd()}
+#chrome_options.add_experimental_option('prefs', prefs)
+#path=os.getcwd() + "\chromedriver.exe"
+#driver = webdriver.Chrome(chrome_options=chrome_options,executable_path=r'' + path )
 
-driver.get("https://www.kaggle.com/account/login?returnUrl=%2Fmomanyc%2Fmuseum-collection%2Fversion%2F1")
-time.sleep(5) # Let the user actually see something!
+#driver.get("https://www.kaggle.com/account/login?returnUrl=%2Fmomanyc%2Fmuseum-collection%2Fversion%2F1")
+#time.sleep(5) # Let the user actually see something!
 
-username = driver.find_element_by_name('username').send_keys('pythonesiee')
-password=driver.find_element_by_name('password').send_keys('python.esiee16')
-signIn=driver.find_element_by_id('submit-sign-in-button').click()
-download=driver.find_element_by_name('download').click()
+#username = driver.find_element_by_name('username').send_keys('pythonesiee')
+#password=driver.find_element_by_name('password').send_keys('python.esiee16')
+#signIn=driver.find_element_by_id('submit-sign-in-button').click()
+#download=driver.find_element_by_name('download').click()
 
-time.sleep(5) # Let the user actually see something!
-driver.quit()
+#time.sleep(5) # Let the user actually see something!
+#driver.quit()
 
-zip_ref = zipfile.ZipFile(os.getcwd() + "\museum-collection.zip", 'r')
-zip_ref.extractall(os.getcwd())
-zip_ref.close()
+#zip_ref = zipfile.ZipFile(os.getcwd() + "\museum-collection.zip", 'r')
+#zip_ref.extractall(os.getcwd())
+#zip_ref.close()
 #https://www.science-emergence.com/Articles/T%C3%A9l%C3%A9charger-un-fichier-pdf-du-web-avec-python/
 
 
