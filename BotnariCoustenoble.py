@@ -52,7 +52,7 @@ with open('artists.csv', 'r', encoding='utf8') as f:
     listeLignes = list(r) # l'itérable est converti en liste
     nbLignes=len(listeLignes)
     
-    with open('countries.csv', 'r', encoding='utf8') as f2:
+    with open('SAFEcountries.csv', 'r', encoding='utf8') as f2:
         
         r = csv.reader(f2)
         listeLignesCountry = list(r) # l'itérable est converti en liste
@@ -74,9 +74,11 @@ with open('artists.csv', 'r', encoding='utf8') as f:
             nbLignes=len(listeLignesCountry)
             for i in range(1,nbLignes) :
                 if k in listeLignesCountry[i][4] :
-                    dCountry[listeLignesCountry[i][2]]=d[k]
-                    ok = 1
-                    break
+                    if not listeLignesCountry[i][2]=='UMI' :
+                        if not listeLignesCountry[i][2]=='ASM' :
+                            dCountry[listeLignesCountry[i][2]]=d[k]
+                            ok = 1
+                            break
             if ok==0:
                 print(k+"\n")
 

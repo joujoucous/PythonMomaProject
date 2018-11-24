@@ -14,7 +14,7 @@ num_code,alpha_2_code,alpha_3_code,en_short_name,nationality
 533,AW,ABW,Aruba,Aruban
 36,AU,AUS,Australia,Australian
 40,AT,AUT,Austria,Austrian
-"31,AZ,AZE,Azerbaijan,""Azerbaijani, Azeri"""
+31,AZ,AZE,Azerbaijan,"Azerbaijani, Azeri"
 44,BS,BHS,Bahamas,Bahamian
 48,BH,BHR,Bahrain,Bahraini
 50,BD,BGD,Bangladesh,Bangladeshi
@@ -22,13 +22,13 @@ num_code,alpha_2_code,alpha_3_code,en_short_name,nationality
 112,BY,BLR,Belarus,Belarusian
 56,BE,BEL,Belgium,Belgian
 84,BZ,BLZ,Belize,Belizean
-"204,BJ,BEN,Benin,""Beninese, Beninois"""
-"60,BM,BMU,Bermuda,""Bermudian, Bermudan"""
+204,BJ,BEN,Benin,"Beninese, Beninois"
+60,BM,BMU,Bermuda,"Bermudian, Bermudan"
 64,BT,BTN,Bhutan,Bhutanese
 68,BO,BOL,Bolivia (Plurinational State of),Bolivian
-"535,BQ,BES,""Bonaire, Sint Eustatius and Saba"",Bonaire"
+535,BQ,BES,"Bonaire, Sint Eustatius and Saba",Bonaire
 70,BA,BIH,Bosnia and Herzegovina,Bosnian or Herzegovinian
-"72,BW,BWA,Botswana,""Motswana, Botswanan"""
+72,BW,BWA,Botswana,"Motswana, Botswanan"
 74,BV,BVT,Bouvet Island,Bouvet Island
 76,BR,BRA,Brazil,Brazilian
 86,IO,IOT,British Indian Ocean Territory,BIOT
@@ -48,7 +48,7 @@ num_code,alpha_2_code,alpha_3_code,en_short_name,nationality
 162,CX,CXR,Christmas Island,Christmas Island
 166,CC,CCK,Cocos (Keeling) Islands,Cocos Island
 170,CO,COL,Colombia,Colombian
-"174,KM,COM,Comoros,""Comoran, Comorian"""
+174,KM,COM,Comoros,"Comoran, Comorian"
 178,CG,COG,Congo (Republic of the),Congolese
 180,CD,COD,Congo (Democratic Republic of the),Congolese
 184,CK,COK,Cook Islands,Cook Island
@@ -66,7 +66,7 @@ num_code,alpha_2_code,alpha_3_code,en_short_name,nationality
 218,EC,ECU,Ecuador,Ecuadorian
 818,EG,EGY,Egypt,Egyptian
 222,SV,SLV,El Salvador,Salvadoran
-"226,GQ,GNQ,Equatorial Guinea,""Equatorial Guinean, Equatoguinean"""
+226,GQ,GNQ,Equatorial Guinea,"Equatorial Guinean, Equatoguinean"
 232,ER,ERI,Eritrea,Eritrean
 233,EE,EST,Estonia,Estonian
 231,ET,ETH,Ethiopia,Ethiopian
@@ -84,11 +84,11 @@ num_code,alpha_2_code,alpha_3_code,en_short_name,nationality
 276,DE,DEU,Germany,German
 288,GH,GHA,Ghana,Ghanaian
 292,GI,GIB,Gibraltar,Gibraltar
-"300,GR,GRC,Greece,""Greek, Hellenic"""
+300,GR,GRC,Greece,"Greek, Hellenic"
 304,GL,GRL,Greenland,Greenlandic
 308,GD,GRD,Grenada,Grenadian
 312,GP,GLP,Guadeloupe,Guadeloupe
-"316,GU,GUM,Guam,""Guamanian, Guambat"""
+316,GU,GUM,Guam,"Guamanian, Guambat"
 320,GT,GTM,Guatemala,Guatemalan
 831,GG,GGY,Guernsey,Channel Island
 324,GN,GIN,Guinea,Guinean
@@ -98,12 +98,12 @@ num_code,alpha_2_code,alpha_3_code,en_short_name,nationality
 334,HM,HMD,Heard Island and McDonald Islands,Heard Island or McDonald Islands
 336,VA,VAT,Vatican City State,Vatican
 340,HN,HND,Honduras,Honduran
-"344,HK,HKG,Hong Kong,""Hong Kong, Hong Kongese"""
-"348,HU,HUN,Hungary,""Hungarian, Magyar"""
+344,HK,HKG,Hong Kong,"Hong Kong, Hong Kongese"
+348,HU,HUN,Hungary,"Hungarian, Magyar"
 352,IS,ISL,Iceland,Icelandic
 356,IN,IND,India,Indian
 360,ID,IDN,Indonesia,Indonesian
-"364,IR,IRN,Iran,""Iranian, Persian"""
+364,IR,IRN,Iran,"Iranian, Persian"
 368,IQ,IRQ,Iraq,Iraqi
 372,IE,IRL,Ireland,Irish
 833,IM,IMN,Isle of Man,Manx
@@ -113,14 +113,14 @@ num_code,alpha_2_code,alpha_3_code,en_short_name,nationality
 392,JP,JPN,Japan,Japanese
 832,JE,JEY,Jersey,Channel Island
 400,JO,JOR,Jordan,Jordanian
-"398,KZ,KAZ,Kazakhstan,""Kazakhstani, Kazakh"""
+398,KZ,KAZ,Kazakhstan,"Kazakhstani, Kazakh"
 404,KE,KEN,Kenya,Kenyan
 296,KI,KIR,Kiribati,I-Kiribati
 408,KP,PRK,Korea (Democratic People's Republic of),North Korean
 410,KR,KOR,Korea (Republic of),South Korean
 414,KW,KWT,Kuwait,Kuwaiti
-"417,KG,KGZ,Kyrgyzstan,""Kyrgyzstani, Kyrgyz, Kirgiz, Kirghiz"""
-"418,LA,LAO,Lao People's Democratic Republic,""Lao, Laotian"""
+417,KG,KGZ,Kyrgyzstan,"Kyrgyzstani, Kyrgyz, Kirgiz, Kirghiz"
+418,LA,LAO,Lao People's Democratic Republic,"Lao, Laotian"
 428,LV,LVA,Latvia,Latvian
 422,LB,LBN,Lebanon,Lebanese
 426,LS,LSO,Lesotho,Basotho
@@ -128,24 +128,24 @@ num_code,alpha_2_code,alpha_3_code,en_short_name,nationality
 434,LY,LBY,Libya,Libyan
 438,LI,LIE,Liechtenstein,Liechtenstein
 440,LT,LTU,Lithuania,Lithuanian
-"442,LU,LUX,Luxembourg,""Luxembourg, Luxembourgish"""
-"446,MO,MAC,Macao,""Macanese, Chinese"""
+442,LU,LUX,Luxembourg,"Luxembourg, Luxembourgish"
+446,MO,MAC,Macao,"Macanese, Chinese"
 807,MK,MKD,Macedonia (the former Yugoslav Republic of),Macedonian
 450,MG,MDG,Madagascar,Malagasy
 454,MW,MWI,Malawi,Malawian
 458,MY,MYS,Malaysia,Malaysian
 462,MV,MDV,Maldives,Maldivian
-"466,ML,MLI,Mali,""Malian, Malinese"""
+466,ML,MLI,Mali,"Malian, Malinese"
 470,MT,MLT,Malta,Maltese
 584,MH,MHL,Marshall Islands,Marshallese
-"474,MQ,MTQ,Martinique,""Martiniquais, Martinican"""
+474,MQ,MTQ,Martinique,"Martiniquais, Martinican"
 478,MR,MRT,Mauritania,Mauritanian
 480,MU,MUS,Mauritius,Mauritian
 175,YT,MYT,Mayotte,Mahoran
 484,MX,MEX,Mexico,Mexican
 583,FM,FSM,Micronesia (Federated States of),Micronesian
 498,MD,MDA,Moldova (Republic of),Moldovan
-"492,MC,MCO,Monaco,""Monégasque, Monacan"""
+492,MC,MCO,Monaco,"Monégasque, Monacan"
 496,MN,MNG,Mongolia,Mongolian
 499,ME,MNE,Montenegro,Montenegrin
 500,MS,MSR,Montserrat,Montserratian
@@ -154,10 +154,10 @@ num_code,alpha_2_code,alpha_3_code,en_short_name,nationality
 104,MM,MMR,Myanmar,Burmese
 516,NA,NAM,Namibia,Namibian
 520,NR,NRU,Nauru,Nauruan
-"524,NP,NPL,Nepal,""Nepali, Nepalese"""
-"528,NL,NLD,Netherlands,""Dutch, Netherlandic"""
+524,NP,NPL,Nepal,"Nepali, Nepalese"
+528,NL,NLD,Netherlands,"Dutch, Netherlandic"
 540,NC,NCL,New Caledonia,New Caledonian
-"554,NZ,NZL,New Zealand,""New Zealand, NZ"""
+554,NZ,NZL,New Zealand,"New Zealand, NZ"
 558,NI,NIC,Nicaragua,Nicaraguan
 562,NE,NER,Niger,Nigerien
 566,NG,NGA,Nigeria,Nigerian
@@ -168,32 +168,32 @@ num_code,alpha_2_code,alpha_3_code,en_short_name,nationality
 512,OM,OMN,Oman,Omani
 586,PK,PAK,Pakistan,Pakistani
 585,PW,PLW,Palau,Palauan
-"275,PS,PSE,""Palestine, State of"",Palestinian"
+275,PS,PSE,"Palestine, State of",Palestinian
 591,PA,PAN,Panama,Panamanian
-"598,PG,PNG,Papua New Guinea,""Papua New Guinean, Papuan"""
+598,PG,PNG,Papua New Guinea,"Papua New Guinean, Papuan"
 600,PY,PRY,Paraguay,Paraguayan
 604,PE,PER,Peru,Peruvian
-"608,PH,PHL,Philippines,""Philippine, Filipino"""
+608,PH,PHL,Philippines,"Philippine, Filipino"
 612,PN,PCN,Pitcairn,Pitcairn Island
 616,PL,POL,Poland,Polish
 620,PT,PRT,Portugal,Portuguese
 630,PR,PRI,Puerto Rico,Puerto Rican
 634,QA,QAT,Qatar,Qatari
-"638,RE,REU,Réunion,""Réunionese, Réunionnais"""
+638,RE,REU,Réunion,"Réunionese, Réunionnais"
 642,RO,ROU,Romania,Romanian
 643,RU,RUS,Russian Federation,Russian
 646,RW,RWA,Rwanda,Rwandan
 652,BL,BLM,Saint Barthélemy,Barthélemois
-"654,SH,SHN,""Saint Helena, Ascension and Tristan da Cunha"",Saint Helenian"
+654,SH,SHN,"Saint Helena, Ascension and Tristan da Cunha",Saint Helenian
 659,KN,KNA,Saint Kitts and Nevis,Kittitian or Nevisian
 662,LC,LCA,Saint Lucia,Saint Lucian
 663,MF,MAF,Saint Martin (French part),Saint-Martinoise
 666,PM,SPM,Saint Pierre and Miquelon,Saint-Pierrais or Miquelonnais
-"670,VC,VCT,Saint Vincent and the Grenadines,""Saint Vincentian, Vincentian"""
+670,VC,VCT,Saint Vincent and the Grenadines,"Saint Vincentian, Vincentian"
 882,WS,WSM,Samoa,Samoan
 674,SM,SMR,San Marino,Sammarinese
 678,ST,STP,Sao Tome and Principe,São Toméan
-"682,SA,SAU,Saudi Arabia,""Saudi, Saudi Arabian"""
+682,SA,SAU,Saudi Arabia,"Saudi, Saudi Arabian"
 686,SN,SEN,Senegal,Senegalese
 688,RS,SRB,Serbia,Serbian
 690,SC,SYC,Seychelles,Seychellois
@@ -201,9 +201,9 @@ num_code,alpha_2_code,alpha_3_code,en_short_name,nationality
 702,SG,SGP,Singapore,Singaporean
 534,SX,SXM,Sint Maarten (Dutch part),Sint Maarten
 703,SK,SVK,Slovakia,Slovak
-"705,SI,SVN,Slovenia,""Slovenian, Slovene"""
+705,SI,SVN,Slovenia,"Slovenian, Slovene"
 90,SB,SLB,Solomon Islands,Solomon Island
-"706,SO,SOM,Somalia,""Somali, Somalian"""
+706,SO,SOM,Somalia,"Somali, Somalian"
 710,ZA,ZAF,South Africa,South African
 239,GS,SGS,South Georgia and the South Sandwich Islands,South Georgia or South Sandwich Islands
 728,SS,SSD,South Sudan,South Sudanese
@@ -216,9 +216,9 @@ num_code,alpha_2_code,alpha_3_code,en_short_name,nationality
 752,SE,SWE,Sweden,Swedish
 756,CH,CHE,Switzerland,Swiss
 760,SY,SYR,Syrian Arab Republic,Syrian
-"158,TW,TWN,""Taiwan, Province of China"",""Chinese, Taiwanese"""
+158,TW,TWN,"Taiwan, Province of China","Chinese, Taiwanese"
 762,TJ,TJK,Tajikistan,Tajikistani
-"834,TZ,TZA,""Tanzania, United Republic of"",Tanzanian"
+834,TZ,TZA,"Tanzania, United Republic of",Tanzanian
 764,TH,THA,Thailand,Thai
 626,TL,TLS,Timor-Leste,Timorese
 768,TG,TGO,Togo,Togolese
@@ -232,19 +232,19 @@ num_code,alpha_2_code,alpha_3_code,en_short_name,nationality
 798,TV,TUV,Tuvalu,Tuvaluan
 800,UG,UGA,Uganda,Ugandan
 804,UA,UKR,Ukraine,Ukrainian
-"784,AE,ARE,United Arab Emirates,""Emirati, Emirian, Emiri"""
-"826,GB,GBR,United Kingdom of Great Britain and Northern Ireland,""British, UK"""
-581,UM,UMI,United States Minor Outlying Islands,zzzzz
+784,AE,ARE,United Arab Emirates,"Emirati, Emirian, Emiri"
+826,GB,GBR,United Kingdom of Great Britain and Northern Ireland,"British, UK"
+581,UM,UMI,United States Minor Outlying Islands,American
 840,US,USA,United States of America,American
 858,UY,URY,Uruguay,Uruguayan
-"860,UZ,UZB,Uzbekistan,""Uzbekistani, Uzbek"""
-"548,VU,VUT,Vanuatu,""Ni-Vanuatu, Vanuatuan"""
+860,UZ,UZB,Uzbekistan,"Uzbekistani, Uzbek"
+548,VU,VUT,Vanuatu,"Ni-Vanuatu, Vanuatuan"
 862,VE,VEN,Venezuela (Bolivarian Republic of),Venezuelan
 704,VN,VNM,Vietnam,Vietnamese
 92,VG,VGB,Virgin Islands (British),British Virgin Island
 850,VI,VIR,Virgin Islands (U.S.),U.S. Virgin Island
-"876,WF,WLF,Wallis and Futuna,""Wallis and Futuna, Wallisian or Futunan"""
-"732,EH,ESH,Western Sahara,""Sahrawi, Sahrawian, Sahraouian"""
+876,WF,WLF,Wallis and Futuna,"Wallis and Futuna, Wallisian or Futunan"
+732,EH,ESH,Western Sahara,"Sahrawi, Sahrawian, Sahraouian"
 887,YE,YEM,Yemen,Yemeni
 894,ZM,ZMB,Zambia,Zambian
 716,ZW,ZWE,Zimbabwe,Zimbabwean
