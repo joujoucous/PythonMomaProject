@@ -5,11 +5,13 @@ Created on Thu Nov  8 17:34:07 2018
 
 @author: joujoucous
 """
+#python3 -m pip install --upgrade pandas==0.23.0
 #imports
 import csv
 import folium
 import matplotlib.pyplot as plt
 import json
+import pandas as pd
 #import folium
 
 #récuperer les deux csv sur internet
@@ -80,11 +82,45 @@ with open('artists.csv', 'r', encoding='utf8') as f:
                 print(k+"\n")
                 
                 
+#préparation des données géographiques
+geo_data = {"type": "FeatureCollection", "features": []} # master dict structure
+
+fGeo = open('map.geojson', 'r', encoding='utf8')
+g = json.loads(fGeo.read())
+fGeo.close()
+geo_data["features"].extend((g["features"])) # add current geojson data to master dict
+
+#préparation des données numériques
 #créer un fichier csv avec les données du dictionaire dCountry
-with open('mycsvfile.csv','w') as f:
+with open('cleanData.csv','w') as f:
     w = csv.writer(f)
     w.writerow(['Pays d origine', 'Nombre total d artiste'])
     w.writerows(dCountry.items())
+
+df = pd.read_csv('cleanData.csv', sep=';')
+df['Pays d origine'] = df['Pays d origine'].astype(str)
+df['Nombre total d artiste'] = pd.to_numeric(df['Nombre total d artiste'])
+
+# select columns
+df = df.loc[:, ('Pays d origine', 'Nombre total d artist')]
+
+#création d’une instance de Folium.Map
+coords = (46.6299767,1.8489683)
+map = folium.Map(location=coords, tiles='OpenStreetMap', zoom_start=2)
+#application la méthode choropleth() à l'instance map
+map.choropleth(
+    geo_data=geo_data,
+    name='choropleth',
+    data=df,
+    columns=['Pays d origine', 'Nombre total d artiste'], # data key/value pair
+    key_on='feature.properties.code', # corresponding layer in GeoJSON
+    fill_color='YlGn',
+    fill_opacity=0.7,
+    line_opacity=0.2,
+    legend_name='Origine des artistes du MOMA'
+)
+
+map.save(outfile='map.html')
 
 #faire l'histogramme avec les tailles des oeuvres ou ave le nombre d'oeuvres crées par années
                 

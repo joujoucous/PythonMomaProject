@@ -27,7 +27,6 @@ geo_data["features"].extend((g["features"])) # add current geojson data to maste
 
 #data prep
 
-
 #application la méthode choropleth() à l'instance map
 map.choropleth(
     geo_data=geo_data,
