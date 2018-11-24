@@ -9,6 +9,7 @@ Created on Thu Nov  8 17:34:07 2018
 import csv
 import folium
 import matplotlib.pyplot as plt
+import json
 #import folium
 
 #récuperer les deux csv sur internet
@@ -77,6 +78,13 @@ with open('artists.csv', 'r', encoding='utf8') as f:
                     break
             if ok==0:
                 print(k+"\n")
+                
+                
+#créer un fichier csv avec les données du dictionaire dCountry
+with open('mycsvfile.csv','w') as f:
+    w = csv.writer(f)
+    w.writerow(['Pays d origine', 'Nombre total d artiste'])
+    w.writerows(dCountry.items())
 
 #faire l'histogramme avec les tailles des oeuvres ou ave le nombre d'oeuvres crées par années
                 
