@@ -5,14 +5,13 @@ Created on Thu Nov  8 17:34:07 2018
 
 @author: joujoucous
 """
-#python3 -m pip install --upgrade pandas==0.23.0
 #imports
 import csv
 import folium
 import matplotlib.pyplot as plt
 import json
+import os
 import pandas as pd
-#import folium
 
 #récuperer les deux csv sur internet
 
@@ -80,64 +79,41 @@ with open('artists.csv', 'r', encoding='utf8') as f:
                     break
             if ok==0:
                 print(k+"\n")
-                
-                
-#préparation des données géographiques
-geo_data = {"type": "FeatureCollection", "features": []} # master dict structure
 
-fGeo = open('map.geojson', 'r', encoding='utf8')
-g = json.loads(fGeo.read())
-fGeo.close()
-geo_data["features"].extend((g["features"])) # add current geojson data to master dict
-
-#préparation des données numériques
 #créer un fichier csv avec les données du dictionaire dCountry
 with open('cleanData.csv','w') as f:
     w = csv.writer(f)
     w.writerow(['Pays d origine', 'Nombre total d artiste'])
     w.writerows(dCountry.items())
 
-df = pd.read_csv('cleanData.csv', sep=';')
-df['Pays d origine'] = df['Pays d origine'].astype(str)
-df['Nombre total d artiste'] = pd.to_numeric(df['Nombre total d artiste'])
 
-# select columns
-df = df.loc[:, ('Pays d origine', 'Nombre total d artist')]
-
-#création d’une instance de Folium.Map
+# Load the shape of the zone
+word_geo = os.path.join('map.geojson')
+ 
+# Load the number of artists comeing from each country
+artists_origine = os.path.join('cleanData.csv')
+word_data = pd.read_csv(artists_origine)
+ 
+# Initialize the map:
 coords = (46.6299767,1.8489683)
-map = folium.Map(location=coords, tiles='OpenStreetMap', zoom_start=2)
-#application la méthode choropleth() à l'instance map
-map.choropleth(
-    geo_data=geo_data,
-    name='choropleth',
-    data=df,
-    columns=['Pays d origine', 'Nombre total d artiste'], # data key/value pair
-    key_on='feature.properties.code', # corresponding layer in GeoJSON
-    fill_color='YlGn',
-    fill_opacity=0.7,
-    line_opacity=0.2,
-    legend_name='Origine des artistes du MOMA'
+m = folium.Map(location=coords, zoom_start=2)
+ 
+# Add the color for the chloropleth:
+m.choropleth(
+ geo_data=word_geo,
+ name='choropleth',
+ data=word_data,
+ columns=['Pays d origine', 'Nombre total d artiste'],
+ key_on='feature.properties.A3',
+ fill_color='Jul',
+ fill_opacity=0.7,
+ line_opacity=0.2,
+ legend_name='Origine des artises'
 )
+folium.LayerControl().add_to(m)
+ 
+# Save to html
+m.save('MOMA.html')
 
-map.save(outfile='map.html')
+  
 
-#faire l'histogramme avec les tailles des oeuvres ou ave le nombre d'oeuvres crées par années
-                
-with open('artworks.csv', 'r', encoding='utf8') as f3:
-    r = csv.reader(f3)
-    listeLignesOeuvres = list(r) # l'itérable est converti en liste
-    nbOeuvres=len(listeLignesOeuvres)
-    for i in range(1,nbOeuvres) :
-        if  (listeLignesOeuvres[i][5])!="" :
-            data[i-1]=listeLignesOeuvres[i][5]
-            print(data[i-1]+"\n")
-
-#faire l'histogramme avec les tailles des oeuvres ou ave le nombre d'oeuvres crées par années    
-#data = [1995,1997,1995,1974,1995,1997,1987,1940,1956,1977,1990]
-#plt.hist(data,normed=1)
-plt.hist(data,bins = list(range(1940,2000,10)), color = 'yellow',edgecolor = 'red')
-plt.xlabel('Année création oeuvres')
-plt.ylabel('Nombre Oeuvres')
-plt.title('Exemple d\' histogramme simple')
-plt.show()
