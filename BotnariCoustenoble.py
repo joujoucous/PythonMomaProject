@@ -105,7 +105,7 @@ m.choropleth(
  data=word_data,
  columns=['Pays d origine', 'Nombre total d artiste'],
  key_on='feature.properties.A3',
- fill_color='Jul',
+ fill_color='YlGn',
  fill_opacity=0.7,
  line_opacity=0.2,
  legend_name='Origine des artises'
