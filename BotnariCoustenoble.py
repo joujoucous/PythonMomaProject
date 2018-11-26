@@ -117,23 +117,25 @@ folium.LayerControl().add_to(m)
 # Save to html
 m.save('MOMA.html')
 
-  #faire l'histogramme avec les tailles des oeuvres ou ave le nombre d'oeuvres crées par années
+#faire l'histogramme avec les tailles des oeuvres ou ave le nombre d'oeuvres crées par années
                 
 with open('artworks.csv', 'r', encoding='utf8') as f3:
     r = csv.reader(f3)
     listeLignesOeuvres = list(r) # l'itérable est converti en liste
     nbOeuvres=len(listeLignesOeuvres)
+
+    data=[]
     for i in range(1,nbOeuvres) :
-        if  (listeLignesOeuvres[i][5])!="" :
-            data[i-1]=listeLignesOeuvres[i][5]
-            print(data[i-1]+"\n")
+        if  (listeLignesOeuvres[i][4])!="" :
+            str = (listeLignesOeuvres[i][4]).replace('-', ' ')
+            data+=([int(c) for c in str.split(' ') if (c.isdigit() and int(c)>1900)])
+    #print(data)
      
-#data = [1995,1997,1995,1974,1995,1997,1987,1940,1956,1977,1990]
-#plt.hist(data,normed=1)
-plt.hist(data,bins = list(range(1940,2000,10)), color = 'yellow',edgecolor = 'red')
-plt.xlabel('Année création oeuvres')
-plt.ylabel('Nombre Oeuvres')
-plt.title('Exemple d\' histogramme simple')
+plt.hist(data,bins = list(range(1900,2018,1)), color = 'yellow',edgecolor = 'red')
+plt.xlabel("Année de création")
+plt.ylabel("Nombre d'oeuvres")
+plt.title("Nombre d'oeuvres créées par année")
 plt.show()
+
         
 
