@@ -9,7 +9,6 @@ Created on Thu Nov  8 17:34:07 2018
 import csv
 import folium
 import matplotlib.pyplot as plt
-import json
 import os
 import pandas as pd
 
@@ -82,47 +81,40 @@ with open('artists.csv', 'r', encoding='utf8') as f:
             if ok==0:
                 print(k+"\n")
 
-
-#préparation des données géographiques
-geo_data = {"type": "FeatureCollection", "features": []} # master dict structure
-
-fGeo = open('map.geojson', 'r', encoding='utf8')
-g = json.loads(fGeo.read())
-fGeo.close()
-geo_data["features"].extend((g["features"])) # add current geojson data to master dict
-
-#préparation des données numériques
 #créer un fichier csv avec les données du dictionaire dCountry
 with open('cleanData.csv','w') as f:
     w = csv.writer(f)
     w.writerow(['Pays d origine', 'Nombre total d artiste'])
     w.writerows(dCountry.items())
 
-df = pd.read_csv('cleanData.csv', sep=',')
-df['Pays d origine'] = df['Pays d origine'].astype(str)
-df['Nombre total d artiste'] = df['Nombre total d artiste'].str.replace(" ", "")
-df['Nombre total d artiste'] = pd.to_numeric(df['Nombre total d artiste'])
 
-# select columns
-df = df.loc[:, ('Pays d origine', 'Nombre total d artist')]
-
-#création d’une instance de Folium.Map
+# Load the shape of the zone
+word_geo = os.path.join('map.geojson')
+ 
+# Load the number of artists comeing from each country
+artists_origine = os.path.join('cleanData.csv')
+word_data = pd.read_csv(artists_origine)
+ 
+# Initialize the map:
 coords = (46.6299767,1.8489683)
-map = folium.Map(location=coords, zoom_start=2)
-#application la méthode choropleth() à l'instance map
-map.choropleth(
-    geo_data=geo_data,
-    name='choropleth',
-    data=df,
-    columns=['Pays d origine', 'Nombre total d artiste'], # data key/value pair
-    key_on='Features.properties.A3', # corresponding layer in GeoJSON
-    fill_color='YlGn',
-    fill_opacity=0.7,
-    line_opacity=0.2,
-    legend_name='Origine des artistes du MOMA'
+m = folium.Map(location=coords, zoom_start=2)
+ 
+# Add the color for the chloropleth:
+m.choropleth(
+ geo_data=word_geo,
+ name='choropleth',
+ data=word_data,
+ columns=['Pays d origine', 'Nombre total d artiste'],
+ key_on='feature.properties.A3',
+ fill_color='YlGn',
+ fill_opacity=0.7,
+ line_opacity=0.2,
+ legend_name='Origine des artises'
 )
-
-map.save(outfile='MOMA.html')
+folium.LayerControl().add_to(m)
+ 
+# Save to html
+m.save('MOMA.html')
 
 #faire l'histogramme avec les tailles des oeuvres ou ave le nombre d'oeuvres crées par années
                 
@@ -143,6 +135,4 @@ plt.xlabel("Année de création")
 plt.ylabel("Nombre d'oeuvres")
 plt.title("Nombre d'oeuvres créées par année")
 plt.show()
-
-        
-
+#{"type":"FeatureCollection","features":[{"type":"Feature","geometry":{"type":"MultiPolygon","coordinates":[[[[-24.39,14.81],[-24.5,14.92],[-24.37,15.05],[-24.28,14.88],[-24.39,14.81]]],[[[-23.68,15.31],[-23.44,15.04],[-23.48,14.91],[-23.78,15.06],[-23.68,15.31]]],[[[-24.32,16.49],[-24.42,16.65],[-24.01,16.57],[-24.32,16.49]]],[[[-25.09,17.2],[-24.99,17.06],[-25.3,16.91],[-25.34,17.09],[-25.09,17.2]]],[[[-23.12,15.14],[-23.23,15.15],[-23.18,15.34],[-23.12,15.14]]],[[[-22.91,16.15],[-22.79,16.23],[-22.67,16.08],[-22.88,15.97],[-22.91,16.15]]],[[[-22.94,16.68],[-22.92,16.86],[-22.89,16.59],[-22.94,16.68]]]]},"properties":{"A3":"CPV"}}
