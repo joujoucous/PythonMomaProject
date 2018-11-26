@@ -82,40 +82,47 @@ with open('artists.csv', 'r', encoding='utf8') as f:
             if ok==0:
                 print(k+"\n")
 
+
+#préparation des données géographiques
+geo_data = {"type": "FeatureCollection", "features": []} # master dict structure
+
+fGeo = open('map.geojson', 'r', encoding='utf8')
+g = json.loads(fGeo.read())
+fGeo.close()
+geo_data["features"].extend((g["features"])) # add current geojson data to master dict
+
+#préparation des données numériques
 #créer un fichier csv avec les données du dictionaire dCountry
 with open('cleanData.csv','w') as f:
     w = csv.writer(f)
     w.writerow(['Pays d origine', 'Nombre total d artiste'])
     w.writerows(dCountry.items())
 
+df = pd.read_csv('cleanData.csv', sep=',')
+df['Pays d origine'] = df['Pays d origine'].astype(str)
+df['Nombre total d artiste'] = df['Nombre total d artiste'].str.replace(" ", "")
+df['Nombre total d artiste'] = pd.to_numeric(df['Nombre total d artiste'])
 
-# Load the shape of the zone
-word_geo = os.path.join('map.geojson')
- 
-# Load the number of artists comeing from each country
-artists_origine = os.path.join('cleanData.csv')
-word_data = pd.read_csv(artists_origine)
- 
-# Initialize the map:
+# select columns
+df = df.loc[:, ('Pays d origine', 'Nombre total d artist')]
+
+#création d’une instance de Folium.Map
 coords = (46.6299767,1.8489683)
-m = folium.Map(location=coords, zoom_start=2)
- 
-# Add the color for the chloropleth:
-m.choropleth(
- geo_data=word_geo,
- name='choropleth',
- data=word_data,
- columns=['Pays d origine', 'Nombre total d artiste'],
- key_on='feature.properties.A3',
- fill_color='YlGn',
- fill_opacity=0.7,
- line_opacity=0.2,
- legend_name='Origine des artises'
+map = folium.Map(location=coords, zoom_start=2)
+#application la méthode choropleth() à l'instance map
+map.choropleth(
+    geo_data=geo_data,
+    name='choropleth',
+    data=df,
+    columns=['Pays d origine', 'Nombre total d artiste'], # data key/value pair
+    key_on='Features.properties.A3', # corresponding layer in GeoJSON
+    fill_color='YlGn',
+    fill_opacity=0.7,
+    line_opacity=0.2,
+    legend_name='Origine des artistes du MOMA'
 )
-folium.LayerControl().add_to(m)
- 
-# Save to html
-m.save('MOMA.html')
+
+map.save(outfile='MOMA.html')
 
 #faire l'histogramme avec les tailles des oeuvres ou ave le nombre d'oeuvres crées par années
                 
