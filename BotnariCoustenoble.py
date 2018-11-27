@@ -62,25 +62,22 @@ with open('artists.csv', 'r', encoding='utf8') as f:
                 d[listeLignes[i][2]] = 1
             else:
                 d[listeLignes[i][2]] = d[listeLignes[i][2]]+1
+                
 # Pour chaqués clés du dico
 #	pour choques lignes du csv country
 #		si clé EST CONTENU DANS linecountry[i][4]
 #			clé <- linecountry[i][2]        ``
         dCountry={}
-    #transformet la nationalité en pays
-
+        #transformet la nationalité en pays
         for k in d.keys():
-            ok=0
             nbLignes=len(listeLignesCountry)
             for i in range(1,nbLignes) :
                 if k in listeLignesCountry[i][4] :
                     if not listeLignesCountry[i][2]=='UMI' :
                         if not listeLignesCountry[i][2]=='ASM' :
                             dCountry[listeLignesCountry[i][2]]=d[k]
-                            ok = 1
                             break
-            if ok==0:
-                print(k+"\n")
+        #transforme une donnée n en log(n) pour plus de lisiblité sur la carte
         for k in dCountry.keys():
             dCountry[k]=math.log(dCountry[k])
 
