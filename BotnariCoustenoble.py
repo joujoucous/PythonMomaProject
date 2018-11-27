@@ -11,6 +11,7 @@ import folium
 import matplotlib.pyplot as plt
 import os
 import pandas as pd
+import math
 
 #récuperer les deux csv sur internet
 
@@ -80,6 +81,8 @@ with open('artists.csv', 'r', encoding='utf8') as f:
                             break
             if ok==0:
                 print(k+"\n")
+        for k in dCountry.keys():
+            dCountry[k]=math.log(dCountry[k])
 
 #créer un fichier csv avec les données du dictionaire dCountry
 with open('cleanData.csv','w') as f:
@@ -105,13 +108,13 @@ m.choropleth(
  name='choropleth',
  data=word_data,
  columns=['Pays d origine', 'Nombre total d artiste'],
- threshold_scale=[1,100,500,1000,2000,5200],
+ #threshold_scale=[1,100,500,1000,2000,5200],
  key_on='feature.properties.A3',
- nan_fill_color='white',
+ #nan_fill_color='white',
  fill_color='YlOrRd',
  fill_opacity=1.0,
- line_opacity=0.2,
- legend_name='Origine des artises'
+ line_opacity=0.2
+ #legend_name='Origine des artises'
 )
 folium.LayerControl().add_to(m)
  
