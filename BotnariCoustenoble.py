@@ -113,13 +113,14 @@ m.choropleth(
  #nan_fill_color='white',
  fill_color='YlOrRd',
  fill_opacity=1.0,
- line_opacity=0.2
+ line_opacity=0.2,
  #legend_name='Origine des artises'
 )
 folium.LayerControl().add_to(m)
  
 # Save to html
 m.save('MOMA.html')
+
 
 #faire l'histogramme avec les tailles des oeuvres ou ave le nombre d'oeuvres crées par années
                 
@@ -138,6 +139,7 @@ with open('artworks.csv', 'r', encoding='utf8') as f3:
 plt.hist(data,bins = list(range(1900,2018,5)), color = 'green',edgecolor = 'white')
 plt.xlabel("Année de création")
 plt.ylabel("Nombre d'oeuvres")
-plt.title("Nombre d'oeuvres créées par année")
+plt.title("Nombre d'oeuvres créées par période")
 plt.show()
+
 #{"type":"FeatureCollection","features":[{"type":"Feature","geometry":{"type":"MultiPolygon","coordinates":[[[[-24.39,14.81],[-24.5,14.92],[-24.37,15.05],[-24.28,14.88],[-24.39,14.81]]],[[[-23.68,15.31],[-23.44,15.04],[-23.48,14.91],[-23.78,15.06],[-23.68,15.31]]],[[[-24.32,16.49],[-24.42,16.65],[-24.01,16.57],[-24.32,16.49]]],[[[-25.09,17.2],[-24.99,17.06],[-25.3,16.91],[-25.34,17.09],[-25.09,17.2]]],[[[-23.12,15.14],[-23.23,15.15],[-23.18,15.34],[-23.12,15.14]]],[[[-22.91,16.15],[-22.79,16.23],[-22.67,16.08],[-22.88,15.97],[-22.91,16.15]]],[[[-22.94,16.68],[-22.92,16.86],[-22.89,16.59],[-22.94,16.68]]]]},"properties":{"A3":"CPV"}}
