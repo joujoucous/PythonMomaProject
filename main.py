@@ -15,7 +15,6 @@ import math
 from selenium import webdriver
 import time 
 import zipfile #pour dezipper
-import os #pour retrouver le chemin courant
 
 
 #récuperer les deux csv sur internet et les dezippe
@@ -137,9 +136,6 @@ def creer_histogramme():
     plt.show()
 
 
-   
-
-
-
-
-#{"type":"FeatureCollection","features":[{"type":"Feature","geometry":{"type":"MultiPolygon","coordinates":[[[[-24.39,14.81],[-24.5,14.92],[-24.37,15.05],[-24.28,14.88],[-24.39,14.81]]],[[[-23.68,15.31],[-23.44,15.04],[-23.48,14.91],[-23.78,15.06],[-23.68,15.31]]],[[[-24.32,16.49],[-24.42,16.65],[-24.01,16.57],[-24.32,16.49]]],[[[-25.09,17.2],[-24.99,17.06],[-25.3,16.91],[-25.34,17.09],[-25.09,17.2]]],[[[-23.12,15.14],[-23.23,15.15],[-23.18,15.34],[-23.12,15.14]]],[[[-22.91,16.15],[-22.79,16.23],[-22.67,16.08],[-22.88,15.97],[-22.91,16.15]]],[[[-22.94,16.68],[-22.92,16.86],[-22.89,16.59],[-22.94,16.68]]]]},"properties":{"A3":"CPV"}}
+recuperer_donnees()
+creer_carte()
+creer_histogramme()
