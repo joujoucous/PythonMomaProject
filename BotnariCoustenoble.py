@@ -105,9 +105,11 @@ m.choropleth(
  name='choropleth',
  data=word_data,
  columns=['Pays d origine', 'Nombre total d artiste'],
+ threshold_scale=[1,100,500,1000,2000,5200],
  key_on='feature.properties.A3',
- fill_color='YlGn',
- fill_opacity=0.7,
+ nan_fill_color='white',
+ fill_color='YlOrRd',
+ fill_opacity=1.0,
  line_opacity=0.2,
  legend_name='Origine des artises'
 )
@@ -130,7 +132,7 @@ with open('artworks.csv', 'r', encoding='utf8') as f3:
             data+=([int(c) for c in str.split(' ') if (c.isdigit() and int(c)>1900)])
     #print(data)
      
-plt.hist(data,bins = list(range(1900,2018,1)), color = 'yellow',edgecolor = 'red')
+plt.hist(data,bins = list(range(1900,2018,5)), color = 'green',edgecolor = 'white')
 plt.xlabel("Année de création")
 plt.ylabel("Nombre d'oeuvres")
 plt.title("Nombre d'oeuvres créées par année")
