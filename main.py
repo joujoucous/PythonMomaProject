@@ -14,7 +14,7 @@ import pandas as pd
 import math
 from selenium import webdriver
 import time 
-import zipfile #pour dezipper
+import zipfile
 
 
 #récuperer les deux csv sur internet et les dezippe
@@ -48,22 +48,24 @@ def creer_carte():
         r = csv.reader(f)
         listeLignes = list(r) # l'itérable est converti en liste
         nbLignes=len(listeLignes)
-        
-        with open('SAFEcountries.csv', 'r', encoding='utf8') as f2:
             
+        #ouverture du fichier contenant les nationalitees et les codes pays avec la methode sécurisée
+        with open('SAFEcountries.csv', 'r', encoding='utf8') as f2:
             r = csv.reader(f2)
             listeLignesCountry = list(r) # l'itérable est converti en liste
             d={}
+            
+            #on compte le nombre d'artistes de chaques nationalité
             for i in range(1,nbLignes) :
                 if not listeLignes[i][2] in d :
                     d[listeLignes[i][2]] = 1
                 else:
                     d[listeLignes[i][2]] = d[listeLignes[i][2]]+1
                     
-    # Pour chaqués clés du dico
-    #	pour choques lignes du csv country
-    #		si clé EST CONTENU DANS linecountry[i][4]
-    #			clé <- linecountry[i][2]        ``
+            # Pour chaqués clés du dico
+            #	pour choques lignes du csv country
+            #		si clé EST CONTENU DANS les nationalitees
+            #			clé <- code pays        ``
             dCountry={}
             #transformet la nationalité en pays
             for k in d.keys():
@@ -85,38 +87,39 @@ def creer_carte():
         w.writerows(dCountry.items())
     
     
-    # Load the shape of the zone
+    # charge les formes du monde
     word_geo = os.path.join('map.geojson')
      
-    # Load the number of artists comeing from each country
+    # charge le nombre d'artistes de chaques pays
     artists_origine = os.path.join('cleanData.csv')
     word_data = pd.read_csv(artists_origine)
      
-    # Initialize the map:
+    # Initialise la map:
     coords = (46.6299767,1.8489683)
     m = folium.Map(location=coords, zoom_start=2)
      
-    # Add the color for the chloropleth:
+    # ajoute les couleurs pour chloropleth:
     m.choropleth(
      geo_data=word_geo,
      name='choropleth',
      data=word_data,
      columns=['Pays d origine', 'Nombre total d artiste'],
-     #threshold_scale=[1,100,500,1000,2000,5200],
      key_on='feature.properties.A3',
-     #nan_fill_color='white',
+     nan_fill_color='white',
      fill_color='YlOrRd',
      fill_opacity=1.0,
      line_opacity=0.2,
-     #legend_name='Origine des artises'
+     legend_name='Origine geographique des artises'
     )
     folium.LayerControl().add_to(m)
      
     # Save to html
     m.save('MOMA.html')
 
+
+
+#l'histogramme avec les tailles des oeuvres ou ave le nombre d'oeuvres crées par années
 def creer_histogramme():
-    #faire l'histogramme avec les tailles des oeuvres ou ave le nombre d'oeuvres crées par années
     with open('artworks.csv', 'r', encoding='utf8') as f3:
         r = csv.reader(f3)
         listeLignesOeuvres = list(r) # l'itérable est converti en liste
@@ -127,7 +130,7 @@ def creer_histogramme():
             if  (listeLignesOeuvres[i][4])!="" :
                 str = (listeLignesOeuvres[i][4]).replace('-', ' ')
                 data+=([int(c) for c in str.split(' ') if (c.isdigit() and int(c)>1900)])
-        #print(data)
+        
          
     plt.hist(data,bins = list(range(1900,2018,5)), color = 'green',edgecolor = 'white')
     plt.xlabel("Année de création")
