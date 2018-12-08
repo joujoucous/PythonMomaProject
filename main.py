@@ -15,6 +15,7 @@ import math
 from selenium import webdriver
 import time 
 import zipfile
+from decimal import Decimal
 
 
 #récuperer les deux csv sur internet et les dezippe
@@ -28,10 +29,10 @@ def recuperer_donnees():
     driver.get("https://www.kaggle.com/account/login?returnUrl=%2Fmomanyc%2Fmuseum-collection%2Fversion%2F1")
     time.sleep(5) # Let the user actually see something!
     
-    username = driver.find_element_by_name('username').send_keys('pythonesiee')
-    password=driver.find_element_by_name('password').send_keys('python.esiee16')
-    signIn=driver.find_element_by_id('submit-sign-in-button').click()
-    download=driver.find_element_by_name('download').click()
+    driver.find_element_by_name('username').send_keys('pythonesiee')
+    driver.find_element_by_name('password').send_keys('python.esiee16')
+    driver.find_element_by_id('submit-sign-in-button').click()
+    driver.find_element_by_name('download').click()
     
     time.sleep(5) # Let the user actually see something!
     driver.quit()
@@ -125,20 +126,32 @@ def creer_histogramme():
         listeLignesOeuvres = list(r) # l'itérable est converti en liste
         nbOeuvres=len(listeLignesOeuvres)
     
-        data=[]
+        creationYear=[]
+        surfaceAriaObject=[]
         for i in range(1,nbOeuvres) :
+            try:
+                if(float(listeLignesOeuvres[i][15])!=0 and float(listeLignesOeuvres[i][17])!=0):
+                    surfaceAriaObject.append(float(listeLignesOeuvres[i][15])*float(listeLignesOeuvres[i][17]))               
+            except ValueError:
+                print ("invalid value on line ", i)
             if  (listeLignesOeuvres[i][4])!="" :
                 str = (listeLignesOeuvres[i][4]).replace('-', ' ')
-                data+=([int(c) for c in str.split(' ') if (c.isdigit() and int(c)>1900)])
+                creationYear+=([int(c) for c in str.split(' ') if (c.isdigit() and int(c)>1900)])
         
-         
-    plt.hist(data,bins = list(range(1900,2018,5)), color = 'green',edgecolor = 'white')
+    #print(surfaceAriaObject)   
+    
+    plt.hist(creationYear,bins = list(range(1900,2018,5)), color = 'green',edgecolor = 'white')
     plt.xlabel("Année de création")
     plt.ylabel("Nombre d'oeuvres")
     plt.title("Nombre d'oeuvres créées par période")
     plt.show()
-
-
+    
+    print(surfaceAriaObject) 
+    plt.hist(surfaceAriaObject,bins = list(range(0,9000,200)), color='blue',edgecolor = 'white')
+    plt.xlabel("Surface(cm^2)")
+    plt.ylabel("Nombre d'oeuvres")
+    plt.title("Nombre d'oeuvres par surface")
+    plt.show()
 recuperer_donnees()
 creer_carte()
 creer_histogramme()
